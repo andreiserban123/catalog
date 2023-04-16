@@ -73,7 +73,7 @@ router.post('/user', async (req, res) => {
       `INSERT INTO SIT_USER (id, NAME, password, email, id_pers)
         VALUES (SIT_USER_SQ.nextval, :name, SIT_UTILS_PKG.encrypt_password(:password), :email, 2) 
       `,
-      { name, password, email }
+      { email, password, email }
     )
     connection.commit()
     connection.close()

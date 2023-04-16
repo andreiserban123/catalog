@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,400&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Header */
+header {
+  background-image: url('./img/bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 80px;
+  height: auto;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #3f51b5;
+  color: #fff;
+  opacity: 0.8;
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  top: 0px;
+  padding: 0 30px;
+}
+
+.navbar a {
+  color: #fff;
+  padding: 10px 20px;
+  margin: 0 5px;
+  font-size: 2rem;
+}
+
+.navbar a:hover {
+  border-bottom: #fff 2px solid;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar .logo {
+  font-weight: 400;
+}
+
+/* Hero */
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.hero-content h1 {
+  font-size: 5vw;
+  color: #fff;
+}
+
+.btn {
+  padding: 30px 300px;
+  color: #fff;
+  border: none;
+  border-radius: 0.8rem;
+  background-color: #3f51b5;
+  font-size: 3rem;
+}
+.btn-text:hover {
+  border-bottom: #fff 2px solid;
+}
+.btn:hover {
+  background-color: #3f51b5bb;
+}
+
+.hero-content > p {
+  margin: 20px 20px;
+  text-align: center;
+  line-height: 1rem;
+  color: aliceblue;
+  font-size: 4rem;
+  margin-bottom: 15rem;
+}
+
+@media (max-width: 600px) {
+  #navbar {
+    padding: 0.5rem;
+  }
+  .navbar ul {
+    justify-content: space-around;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content > p {
+    font-size: 1rem;
+  }
+  .btn {
+    padding: 10px 100px;
+    font-size: 1rem;
+  }
+  .navbar a {
+    font-size: 0.7rem;
+  }
+  .navbar > h1 {
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 6rem;
+    text-align: center;
+  }
+  .hero-content > p {
+    font-size: 2rem;
+  }
+  .btn {
+    padding: 20px 150px;
+    font-size: 2rem;
+  }
+  .navbar a {
+    font-size: 1.5rem;
+  }
+  .navbar > h1 {
+    font-size: 1.5rem;
+  }
+}

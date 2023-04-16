@@ -1,0 +1,138 @@
+* {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  --text-primary: #b6b6b6;
+  --text-secondary: #ececec;
+  --bg-primary: #23232e;
+  --bg-secondary: #141418;
+}
+
+body {
+  color: black;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #3f51b5;
+}
+main {
+  margin-left: 5rem;
+  padding: 1rem;
+}
+
+/* Navbar */
+.navbar {
+  width: 5rem;
+  height: 100vh;
+  position: fixed;
+  background-color: var(--bg-primary);
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item:last-child {
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+.nav-link {
+  color: #fff;
+  display: flex;
+  height: 2rem;
+  align-items: center;
+}
+.nav-link:hover {
+  border-bottom: #fff 1px solid;
+}
+#item-1 {
+  border: none;
+}
+
+/* Main */
+main {
+  background-color: #3f51b5;
+  color: #fff;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.container h1 {
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.container p {
+  padding: 100;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-columns: auto;
+  grid-template-areas:
+    'math'
+    'science'
+    'history'
+    'english'
+    'foreign-lang'
+    'arts';
+}
+
+.cell {
+  background-color: #ddd;
+  border: 1px solid #999;
+  padding: 10px;
+}
+
+#math {
+  grid-area: math;
+}
+
+#science {
+  grid-area: science;
+}
+
+#history {
+  grid-area: history;
+}
+
+#english {
+  grid-area: english;
+}
+
+#foreign-lang {
+  grid-area: foreign-lang;
+}
+
+#arts {
+  grid-area: arts;
+}
