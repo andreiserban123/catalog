@@ -5,6 +5,7 @@
   --text-secondary: #ececec;
   --bg-primary: #23232e;
   --bg-secondary: #141418;
+  box-sizing: border-box;
 }
 
 body {
@@ -23,7 +24,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #3f51b5;
+  background: #7011c9;
 }
 main {
   margin-left: 5rem;
@@ -73,7 +74,7 @@ a {
 main {
   background-color: #3f51b5;
   color: #fff;
-  height: 100vh;
+  height: 100rem;
 }
 
 .container {
@@ -81,7 +82,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100%;
+  height: 100vh;
 }
 
 .container h1 {
@@ -93,46 +94,25 @@ main {
 .container p {
   padding: 100;
 }
+/* Materiile */
 
-.grid-container {
-  display: grid;
-  grid-template-rows: auto auto auto auto auto auto;
-  grid-template-columns: auto;
-  grid-template-areas:
-    'math'
-    'science'
-    'history'
-    'english'
-    'foreign-lang'
-    'arts';
+.materii {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: center; */
 }
-
-.cell {
-  background-color: #ddd;
-  border: 1px solid #999;
-  padding: 10px;
-}
-
-#math {
-  grid-area: math;
-}
-
-#science {
-  grid-area: science;
-}
-
-#history {
-  grid-area: history;
-}
-
-#english {
-  grid-area: english;
-}
-
-#foreign-lang {
-  grid-area: foreign-lang;
-}
-
-#arts {
-  grid-area: arts;
+.materii > li {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #3f51b5;
+  color: #fff;
+  border-radius: 1rem;
+  width: 30rem;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 1px #fff;
 }
