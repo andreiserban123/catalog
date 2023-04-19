@@ -1,0 +1,78 @@
+#container {
+  /*
+        -Remember, margin: auto on left and right will center a block element
+        -I would also set a "max-width" for responsiveness
+        -May want to add some padding
+        */
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.form-wrap {
+  background: white;
+  padding: 15px 25px;
+  color: #333;
+}
+
+.form-wrap h1,
+.form-wrap p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form-wrap .form-group {
+  padding: 10px;
+}
+
+.form-wrap .form-group label {
+  display: block;
+  color: #666;
+}
+
+.form-wrap .form-group input {
+  width: 100%;
+  padding: 20px;
+  border: #ddd 1px solid;
+}
+
+.form-wrap button {
+  width: 60%;
+  margin: 0 auto;
+  display: block;
+  background-color: #3f51b5;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.form-wrap button:hover {
+  /*
+          Hover background color for button is #37a08e
+        */
+  background-color: #3f51b5a1;
+}
+
+.form-wrap .bottom-text {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+}
+
+footer {
+  /*
+        Should be centered
+       */
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+}
+
+footer a {
+  /*
+          Footer link color is #49c1a2
+        */
+  color: #49c1a2;
+}
