@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen text-black text-center">
-      <div className="container bg-white w-3/6 p-10 pt-20 border-solid border-4 border-sky-500 rounded-lg">
+      <div className="container bg-white w-3/6 p-10 pt-20 border-solid border-4 border-indigo-700 rounded-lg">
         <h1 className="text-5xl p-3 font-bold mb-2 underline">Login</h1>
         <form>
           <div className="p-2">
@@ -27,9 +27,9 @@ const Login = () => {
           <Link to="/">
             <button
               type="submit"
-              className="mt-10 w-96  bg-blue-700 text border-2 border-none rounded-lg text-white font-bold py-2 px-10 text-center
+              className="mt-10 w-96  bg-indigo-700 text border-2 border-none rounded-lg text-white font-bold py-2 px-10 text-center
             
-            hover:bg-blue-500
+            hover:bg-indigo-500
             "
             >
               Login
