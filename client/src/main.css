@@ -32,11 +32,13 @@ a {
 body::-webkit-scrollbar {
   width: 0.25rem;
 }
-
 body::-webkit-scrollbar-track {
-  background: #1e1e24;
+  /* background: #1e1e24; */
+  background: rgb(67 56 202);
 }
 
 body::-webkit-scrollbar-thumb {
   background: #7011c9;
+  background: rgb(67 56 202);
+  width: 0.25rem;
 }
