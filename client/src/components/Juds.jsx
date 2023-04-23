@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 
 const Juds = () => {
-  //make an api call to get the data from localhost:5000/api/catalogue/juds
-  //use the data to render the juds
   const [juds, setJuds] = useState([]);
   useEffect(() => {
     fetch('http://localhost:5000/api/catalogue/juds')

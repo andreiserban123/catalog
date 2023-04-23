@@ -25,7 +25,7 @@ const Header = () => {
             <i className="fa-solid fa-phone"></i>
           </a>
         </li>
-        <li className="text-center text-xl font-bold fixed bottom-10 left-2 hover:animate-bounce duration-1000 w-6 h-6 ">
+        <li className="text-center text-xl font-bold fixed bottom-10 left-2 duration-500 hover:-translate-y-6  w-6 h-6 ">
           <Link to="/login" className="text-white">
             <div>Logout</div>
             <i className="fa-solid fa-right-from-bracket"></i>

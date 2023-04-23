@@ -1,59 +1,38 @@
 import { Link } from 'react-router-dom';
 
+import login from '../assets/login.jpg';
+
 const Login = () => {
   return (
-    <div className="flex items-center justify-center h-screen bg-zinc-700">
-      <div className="bg-zinc-800 p-2 mx-6 rounded-2xl md:w-3/12 md:h-96">
-        <form className="flex flex-col gap-2">
-          <label
-            htmlFor="login"
-            className="text-white p-2 font-bold md:text-2xl"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            className=" 
-            p-2
-            px-4
-            text-center
-            text-white
-            bg-zinc-800
-            border
-            border-zinc-600
-            placeholder:text-xs
-            placeholder:text-center
-            md:text-left
-            md:text-xl
-            "
-          />
-          <label
-            htmlFor="login"
-            className="text-white p-2 font-bold md:text-2xl"
-          >
-            Password
-          </label>
-          <input
-            type="password"
-            className=" 
-            p-2
-            px-4
-            text-center
-            text-white
-            bg-zinc-800
-            border
-            border-zinc-600
-            placeholder:text-xs
-            placeholder:text-center
-            md:text-left
-            "
-          />
-          <Link to="/" className="self-center mt-5 mb-2">
-            <button className="px-5 py-3 text-xl rounded-md text-white bg-indigo-500 hover:bg-indigo-700 hover:text-white duration-500 md:px-10 md:py-6 md:text-2xl">
-              Submit
+    <div className="flex items-center min-h-screen justify-center bg-rose-50">
+      <div className="relative flex flex-col m-6 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0">
+        <div className="p-6 md:p-20">
+          <h2 className="font-mono mb-5 text-4xl font-bold">Login</h2>
+          <p className="max-w-sm mb-12 font-sans font-light text-gray-600">
+            Log in to your account to upload or download pictures, videos or
+            music
+          </p>
+          <div className="flex flex-col space-y-3">
+            <input
+              type="text"
+              className="w-full p-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light"
+              placeholder="Enter your email address"
+            />
+            <input
+              type="password"
+              className="w-full p-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light"
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <div className="flex flex-col items-center justify-between mt-6 space-y-6 md:flex-row md:space-y-0">
+            <div className="font-thin text-cyan-700">Forgot password</div>
+            <button className="w-full md:w-full flex justify-center items-center p-6 space-x-4 font-sans font-bold text-white rounded-md px-9 bg-cyan-700 shadow-cyan-500 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150">
+              <span>Next</span>
             </button>
-          </Link>
-        </form>
+          </div>
+        </div>
+        <img src={login} className="w-[430px] hidden md:block" alt="" />
       </div>
     </div>
   );

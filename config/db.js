@@ -27,4 +27,3 @@ async function createPool() {
 createPool().catch((err) => console.error(err.message));
 
 // Export queryDatabase for use in other modules
-// module.exports = queryDatabase
