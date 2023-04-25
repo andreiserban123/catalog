@@ -2,9 +2,15 @@ import Header from '../components/Header';
 
 const Home = () => {
   return (
-    <div className="bg-rose-50">
+    <div className="bg-slate-800">
       <Header />
-      <div className="h-screen ml-20"></div>
+
+      {/* Main hero */}
+      <div className=" ml-20">
+        <h1 className="text-white font-bold text-4xl  h-screen flex items-center justify-center">
+          Hello Student
+        </h1>
+      </div>
     </div>
   );
 };
