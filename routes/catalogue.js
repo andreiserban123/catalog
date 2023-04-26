@@ -26,7 +26,6 @@ router.get('/juds/:id', async (req, res) => {
       }
     );
     connection.close();
-
     res.json({ succes: true, data: result.rows });
   } catch (err) {
     console.error(err.message);
