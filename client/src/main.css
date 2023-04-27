@@ -4,26 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1.6;
-}
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  color: #333;
-  text-decoration: none;
+  body {
+    background-attachment: fixed;
+  }
 }
