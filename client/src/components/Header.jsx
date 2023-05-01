@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FaSchool, FaUserGraduate } from 'react-icons/fa';
 import { MdContactSupport } from 'react-icons/md';
 import { CgLogOut } from 'react-icons/cg';
@@ -35,15 +35,15 @@ const Header = () => {
           </a>
         </li>
         <li className="md:h-full  text-xl text-center font-bold transition ease-in-out delay-150  hover:translate-x-0  hover: duration-300">
-          <a
+          <Link
             className="text-white flex flex-col h-full md:items-center  md:space-y-2"
-            href="/contact"
+            to="/login"
           >
             <div className="md:mt-auto md:mb-2">
               <span className="hidden md:block">Logout</span>
               <CgLogOut className="ml-1" />
             </div>
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

@@ -3,9 +3,8 @@ import Card from '../components/Card';
 
 const Home = () => {
   return (
-    <div className="bg-slate-800  ">
+    <div className="bg-slate-800 bg-fixed ">
       <Header />
-
       <div className="ml-20">
         {/* Main hero */}
         <h1 className="text-white font-bold text-4xl text-center p-6">
