@@ -22,12 +22,11 @@ app.use(
 
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.json({ msg: 'Welcome to the OnlineCatalogue API...' });
-});
-
 const catalogueRouter = require('./routes/catalogue');
 app.use('/api/catalogue', catalogueRouter);
+
+const authRouter = require('./routes/auth');
+app.use('/api/auth', authRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

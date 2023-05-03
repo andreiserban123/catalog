@@ -12,6 +12,21 @@ const Login = () => {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     });
+    fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        history.push('/');
+        console.log(data);
+      });
   }
   return (
     <div className="flex items-center min-h-screen justify-center bg-indigo-400">
