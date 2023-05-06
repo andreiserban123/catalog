@@ -11,12 +11,10 @@ const dbConfig = {
   poolTimeout: 100000, // maximum time in seconds that a connection can remain idle in the pool
 };
 
-let pool;
 async function createPool() {
   try {
-    pool = await oracledb.createPool(dbConfig);
+    await oracledb.createPool(dbConfig);
     console.log('Connection pool created!');
-    return pool;
   } catch (err) {
     console.error('Error creating connection pool:', err.message);
     throw err;
