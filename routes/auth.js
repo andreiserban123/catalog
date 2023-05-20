@@ -6,7 +6,7 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     console.log(email, password);
-    const connection = await oracledb.getConnection(dbConfig);
+    const connection = await oracledb.getConnection();
     const result = await connection.execute(
       `SELECT * FROM SIT_USER WHERE EMAIL = :email AND PASSWORD = SIT_UTILS_PKG.ENCRYPT_PASSWORD(:password)`,
       {
@@ -15,15 +15,22 @@ router.post("/login", async (req, res) => {
       },
       { outFormat: oracledb.OUT_FORMAT_OBJECT }
     );
+    const id = result.rows[0].ID;
+    const result2 = await connection.execute(
+      `select ID_ROLE from SIT_USER_ROLES where ID_USER = :id`,
+      {
+        id,
+      }
+    );
+    const role = result2.rows[0].ID_ROLE;
+
     await connection.close();
     if (result.rows.length > 0) {
       req.session.user = {
         name: result.rows[0].NAME,
         email: result.rows[0].EMAIL,
       };
-      res.json(
-        "name: " + result.rows[0].NAME + " email: " + result.rows[0].EMAIL
-      );
+      res.json(`"status": "success", "email": "${result.rows[0].EMAIL}"`);
     } else {
       res.json('{"error": "Invalid email or password"}');
     }
