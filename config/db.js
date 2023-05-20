@@ -1,5 +1,5 @@
-const oracledb = require('oracledb');
-require('dotenv').config();
+const oracledb = require("oracledb");
+require("dotenv").config();
 
 const dbConfig = {
   user: process.env.DB_USER,
@@ -14,14 +14,12 @@ const dbConfig = {
 async function createPool() {
   try {
     await oracledb.createPool(dbConfig);
-    console.log('Connection pool created!');
+    console.log("Connection pool created!");
   } catch (err) {
-    console.error('Error creating connection pool:', err.message);
+    console.error("Error creating connection pool:", err.message);
     throw err;
   }
 }
 
-// Call createPool() to initialize the pool
-createPool().catch((err) => console.error(err.message));
-
 // Export queryDatabase for use in other modules
+module.exports = { createPool };

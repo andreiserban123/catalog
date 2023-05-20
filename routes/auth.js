@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const oracledb = require("oracledb");
-const dbConfig = require("../config/db");
 
 router.post("/login", async (req, res) => {
   try {
@@ -28,6 +27,18 @@ router.post("/login", async (req, res) => {
     } else {
       res.json('{"error": "Invalid email or password"}');
     }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json("Server Error");
+  }
+});
+
+router.get("/login", async (req, res) => {
+  try {
+    const connection = await oracledb.getConnection();
+    const result = await connection.execute("SELECT * FROM SIT_USER");
+    await connection.close();
+    res.json(result.rows);
   } catch (err) {
     console.error(err.message);
     res.status(500).json("Server Error");

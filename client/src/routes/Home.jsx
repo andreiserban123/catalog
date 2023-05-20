@@ -1,5 +1,5 @@
-import Header from '../components/Header';
-import Card from '../components/Card';
+import Header from "../components/Header";
+import Card from "../components/Card";
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
         <h1 className="text-white font-bold text-4xl text-center p-6">
           Hello Student!
         </h1>
-        <hr class="border-b border-white w-1/2 self-center mx-auto my-2"/>
+        <hr class="border-b border-white w-1/2 self-center mx-auto my-2" />
         <div className="  h-screen grid grid-cols-1 place-items-center md:grid-cols-3 gap-4 ">
           <Card materie="mate" />
           <Card materie="romana" />

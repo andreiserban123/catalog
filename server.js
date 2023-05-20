@@ -4,8 +4,12 @@ const session = require("express-session");
 const port = process.env.PORT || 5000;
 const app = express();
 const cors = require("cors");
+const db = require("./config/db");
 
 //Body parser middleware
+
+//starting the db
+db.createPool();
 
 app.use(express.json());
 
