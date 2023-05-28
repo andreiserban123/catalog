@@ -1,5 +1,6 @@
-const oracledb = require("oracledb");
-require("dotenv").config();
+import oracledb from "oracledb";
+import dotenv from "dotenv";
+dotenv.config();
 
 const dbConfig = {
   user: process.env.DB_USER,
@@ -22,4 +23,4 @@ async function createPool() {
 }
 
 // Export queryDatabase for use in other modules
-module.exports = { createPool };
+export { createPool };
