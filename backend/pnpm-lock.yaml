@@ -10,6 +10,9 @@ dependencies:
   express:
     specifier: ^4.18.2
     version: 4.18.2
+  express-async-handler:
+    specifier: ^1.2.0
+    version: 1.2.0
   express-session:
     specifier: ^1.17.3
     version: 1.17.3
@@ -208,6 +211,10 @@ packages:
   /etag@1.8.1:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
+    dev: false
+
+  /express-async-handler@1.2.0:
+    resolution: {integrity: sha512-rCSVtPXRmQSW8rmik/AIb2P0op6l7r1fMW538yyvTMltCO4xQEWMmobfrIxN2V1/mVrgxB8Az3reYF6yUZw37w==}
     dev: false
 
   /express-session@1.17.3:

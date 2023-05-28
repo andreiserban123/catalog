@@ -3,6 +3,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
     "express-session": "^1.17.3",
     "nodemon": "^2.0.22",
     "oracledb": "^5.5.0"
@@ -13,7 +14,7 @@
   },
   "name": "catalog",
   "description": "",
-  "type":"module",
+  "type": "module",
   "version": "1.0.0",
   "main": "server.js",
   "author": "",
