@@ -11,8 +11,8 @@
     "oracledb": "^5.5.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
   },
   "name": "catalog",
   "description": "",
