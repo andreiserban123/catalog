@@ -9,7 +9,7 @@ import {
 import { protect } from "../middleware/authMiddleware.js";
 
 router.post("/", loginUser);
-router.post("/logout", logoutUser);
+router.post("/logout", protect, logoutUser);
 router
   .route("/profile")
   .get(protect, getUserProfile)
