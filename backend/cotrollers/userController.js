@@ -14,10 +14,11 @@ const loginUser = asyncHandler(async (req, res) => {
     const user = result.rows[0];
     // console.log(user[0]); // id
     const userID = user[0];
-    const query = `SELECT ID FROM SIT_USER_ROLES WHERE ID_user = :userID`;
+    const query = `SELECT ID, ID_ROLE FROM SIT_USER_ROLES WHERE ID_user = :userID`;
     const result2 = await connection.execute(query, { userID });
     const id_user_roles = result2.rows[0][0];
-    generateToken(res, id_user_roles);
+    const id_role = result2.rows[0][1];
+    generateToken(res, id_user_roles, id_role);
     res.status(200).json({
       id: id_user_roles,
       email: user[2],

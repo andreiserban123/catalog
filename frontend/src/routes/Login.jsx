@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { useRef } from 'react';
+import { Link } from "react-router-dom";
+import { useRef } from "react";
 
-import login from '../assets/login-indigo.jpg';
+import login from "../assets/login-indigo.jpg";
 
 const Login = () => {
   const emailRef = useRef();
@@ -12,10 +12,10 @@ const Login = () => {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     });
-    fetch('http://localhost:5000/api/auth/login', {
-      method: 'POST',
+    fetch("http://localhost:5000/api/users", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: emailRef.current.value,
@@ -24,8 +24,7 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        history.push('/');
-        console.log(data);
+        history.push("/");
       });
   }
   return (

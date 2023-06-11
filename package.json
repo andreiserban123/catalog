@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "client": "pnpm run dev --prefix frontend",
+    "client": "cd frontend && pnpm run dev ",
     "dev": "concurrently \"pnpm run server\" \"pnpm run client\""
   },
   "name": "catalog",
