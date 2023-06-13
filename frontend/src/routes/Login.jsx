@@ -24,8 +24,10 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        history.push("/");
-      });
+        localStorage.setItem("jwt", data.jwt);
+        window.location.href = "/home";
+      })
+      .catch((err) => console.log(err));
   }
   return (
     <div className="flex items-center min-h-screen justify-center bg-indigo-400">

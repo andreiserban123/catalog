@@ -12,7 +12,6 @@ const loginUser = asyncHandler(async (req, res) => {
   const result = await connection.execute(query, { email, password });
   if (result.rows.length > 0) {
     const user = result.rows[0];
-    // console.log(user[0]); // id
     const userID = user[0];
     const query = `SELECT ID, ID_ROLE FROM SIT_USER_ROLES WHERE ID_user = :userID`;
     const result2 = await connection.execute(query, { userID });
