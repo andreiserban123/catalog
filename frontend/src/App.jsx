@@ -1,14 +1,22 @@
-import Login from './routes/Login';
-import Home from './routes/Home';
-import Card from './components/Card';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from "./routes/Login";
+import Home from "./routes/Home";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+
 const App = () => {
+  const hasToken = localStorage.getItem("jwt");
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/card" element={<Card />} />
+        {hasToken ? (
+          <Route path="/" element={<Home />} />
+        ) : (
+          <Route path="/login" element={<Login />} />
+        )}
       </Routes>
     </Router>
   );
