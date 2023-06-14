@@ -12,8 +12,8 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "client": "cd frontend && pnpm run dev ",
-    "dev": "concurrently \"pnpm run server\" \"pnpm run client\""
+    "client": "cd frontend && npm run dev ",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "name": "catalog",
   "description": "",
