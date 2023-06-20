@@ -7,7 +7,8 @@
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
     "nodemon": "^2.0.22",
-    "oracledb": "^5.5.0"
+    "oracledb": "^5.5.0",
+    "react-cookie": "^4.1.1"
   },
   "scripts": {
     "start": "node backend/server.js",

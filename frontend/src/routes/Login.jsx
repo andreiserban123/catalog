@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { Cookies } from "react-cookie";
 
 import login from "../assets/login-indigo.jpg";
 
@@ -8,10 +9,7 @@ const Login = () => {
   const passwordRef = useRef();
   async function onSubmit(e) {
     e.preventDefault();
-    console.log({
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
-    });
+    const cookies = new Cookies();
     fetch("http://localhost:5000/api/users", {
       method: "POST",
       headers: {
@@ -24,8 +22,7 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        localStorage.setItem("jwt", data.jwt);
-        window.location.href = "/home";
+        cookies.set("jwt", data.jwt, { path: "/" });
       })
       .catch((err) => console.log(err));
   }

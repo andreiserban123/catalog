@@ -3,7 +3,7 @@ import generateToken from "../utils/generateToken.js";
 import oracledb from "oracledb";
 
 // @desc    login user
-// route    POST /api/users/login
+// route    POST /api/users/
 // @access  PUBLIC
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -45,7 +45,6 @@ const logoutUser = asyncHandler(async (req, res) => {
 // @desc    get profile user
 // route    GET /api/users/profile
 // @access  Private
-
 const getUserProfile = asyncHandler(async (req, res) => {
   console.log(req.user);
   res.status(200).json({ message: `User profil` });
