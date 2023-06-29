@@ -1,31 +1,39 @@
-import { Link } from "react-router-dom";
-import { useRef } from "react";
-import { Cookies } from "react-cookie";
-
-import login from "../assets/login-indigo.jpg";
+import { useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLoginMutation } from '../slices/userApiSlice';
+import { setCredentials } from '../slices/authSlice';
+import loginImg from '../assets/login-indigo.jpg';
 
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  async function onSubmit(e) {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [login, { isLoading }] = useLoginMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [navigate, userInfo]);
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const cookies = new Cookies();
-    fetch("http://localhost:5000/api/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    try {
+      const { data } = await login({
         email: emailRef.current.value,
         password: passwordRef.current.value,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        cookies.set("jwt", data.jwt, { path: "/" });
-      })
-      .catch((err) => console.log(err));
-  }
+      });
+      dispatch(setCredentials(data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="flex items-center min-h-screen justify-center bg-indigo-400">
       <div className="relative flex flex-col m-6 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0">
@@ -61,10 +69,9 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <img src={login} className="w-[430px] hidden md:block" alt="" />
+        <img src={loginImg} className="w-[430px] hidden md:block" alt="" />
       </div>
     </div>
   );
 };
-
 export default Login;
