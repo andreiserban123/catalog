@@ -1,8 +1,9 @@
-import jwt from "jsonwebtoken";
-import asyncHandler from "express-async-handler";
+import jwt from 'jsonwebtoken';
+import asyncHandler from 'express-async-handler';
 
 // aici se verifica daca userul este logat sau nu
 // TO DO: de verificat daca userul este admin sau nu
+
 const protect = asyncHandler(async (req, res, next) => {
   let token;
   token = req.cookies.jwt;
@@ -13,11 +14,11 @@ const protect = asyncHandler(async (req, res, next) => {
       next();
     } catch (error) {
       res.status(401);
-      throw new Error("Not authorized, invalid token");
+      throw new Error('Not authorized, invalid token');
     }
   } else {
     res.status(401);
-    throw new Error("Not authorized, no token");
+    throw new Error('Not authorized, no token');
   }
 });
 

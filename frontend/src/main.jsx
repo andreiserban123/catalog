@@ -1,18 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import store from "./store";
-import { Provider } from "react-redux";
-import Home from "./routes/Home";
-import Login from "./routes/Login";
-import App from "./App";
-import "./main.css";
+import store from './store';
+import { Provider } from 'react-redux';
+import Home from './routes/Home';
+import Login from './routes/Login';
+import App from './App';
+import './main.css';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +23,7 @@ const router = createBrowserRouter(
   )
 );
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <React.StrictMode>
       <RouterProvider router={router} />

@@ -1,6 +1,6 @@
-import asyncHandler from "express-async-handler";
-import generateToken from "../utils/generateToken.js";
-import oracledb from "oracledb";
+import asyncHandler from 'express-async-handler';
+import generateToken from '../utils/generateToken.js';
+import oracledb from 'oracledb';
 
 // @desc    login user
 // route    POST /api/users/
@@ -26,7 +26,7 @@ const loginUser = asyncHandler(async (req, res) => {
   } else {
     await connection.close();
     res.status(401);
-    throw new Error("Invalid email or password");
+    throw new Error('Invalid email or password');
   }
 });
 
@@ -34,15 +34,15 @@ const loginUser = asyncHandler(async (req, res) => {
 // route    POST /api/users/logout
 // @access  PUBLIC
 const logoutUser = asyncHandler(async (req, res) => {
-  res.cookie("jwt", "", {
+  res.cookie('jwt', '', {
     httpOnly: true,
     expires: new Date(0),
   });
 
-  res.status(200).json({ message: "User Logout with success" });
+  res.status(200).json({ message: 'User Logout with success' });
 });
 
-// @desc    get profile user
+// @desc    get proffile user
 // route    GET /api/users/profile
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
@@ -53,7 +53,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 // route    PUT /api/users/profile
 // @access  Private
 const updateUserProfile = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "Update User Profile" });
+  res.status(200).json({ message: 'Update User Profile' });
 });
 
 export { loginUser, logoutUser, getUserProfile, updateUserProfile };

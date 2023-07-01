@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLoginMutation } from '../slices/userApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import loginImg from '../assets/login-indigo.jpg';
-
+import { toast } from 'react-toastify';
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -30,8 +30,9 @@ const Login = () => {
         password: passwordRef.current.value,
       });
       dispatch(setCredentials(data));
+      navigate('/');
     } catch (err) {
-      console.log(err);
+      toast.error(err?.response?.data?.message || err.message);
     }
   };
   return (

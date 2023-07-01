@@ -1,5 +1,5 @@
-import Header from "../components/Header";
-import Card from "../components/Card";
+import Header from '../components/Header';
+import Card from '../components/Card';
 
 const Home = () => {
   return (
@@ -21,4 +21,5 @@ const Home = () => {
     </div>
   );
 };
+
 export default Home;
