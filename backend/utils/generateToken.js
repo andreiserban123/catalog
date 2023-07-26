@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
 
 const generateToken = (res, userId, userRole) => {
   const payload = {
@@ -6,11 +6,11 @@ const generateToken = (res, userId, userRole) => {
     userRole,
   };
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: "30d",
+    expiresIn: '30d',
   });
-  res.cookie("jwt", token, {
+  res.cookie('jwt', token, {
     httpOnly: true,
-    sameSite: "strict",
+    sameSite: 'strict',
     maxAge: 30 * 24 * 60 * 60 * 1000, // merge in secunde (30 de zile in s)
   });
 };

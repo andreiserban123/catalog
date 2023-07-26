@@ -2,14 +2,8 @@ import { Link, Navigate } from 'react-router-dom';
 import { FaSchool, FaUserGraduate } from 'react-icons/fa';
 import { MdContactSupport } from 'react-icons/md';
 import { CgLogOut } from 'react-icons/cg';
-import { useDispatch } from 'react-redux';
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const logout = () => {
-    dispatch({ type: 'LOGOUT' });
-    Navigate('/login');
-  };
   return (
     <nav className="h-screen w-7 md:w-20 border-2 bg-indigo-700  border-indigo-700 border-solid fixed left-0 rounded-br-3xl rounded-tr-3xl">
       <ul className="flex flex-col justify-center text-center space-y-4 h-full md:justify-start md:items-center md:space-y-3  ">
@@ -41,15 +35,12 @@ const Header = () => {
           </a>
         </li>
         <li className="md:h-full  text-xl text-center font-bold transition ease-in-out delay-150  hover:translate-x-0  hover: duration-300">
-          <Link
-            className="text-white flex flex-col h-full md:items-center  md:space-y-2"
-            onClick={logout}
-          >
+          <div className="text-white flex flex-col h-full md:items-center  md:space-y-2">
             <div className="md:mt-auto md:mb-2">
               <span className="hidden md:block">Logout</span>
               <CgLogOut className="ml-1" />
             </div>
-          </Link>
+          </div>
         </li>
       </ul>
     </nav>

@@ -1,27 +1,9 @@
-import { useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLoginMutation } from '../slices/userApiSlice';
-import { setCredentials } from '../slices/authSlice';
+import { useRef } from 'react';
 import loginImg from '../assets/login-indigo.jpg';
 import { toast } from 'react-toastify';
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const [login, { isLoading }] = useLoginMutation();
-
-  const { userInfo } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    if (userInfo) {
-      navigate('/');
-    }
-  }, [navigate, userInfo]);
-
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -70,7 +52,11 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <img src={loginImg} className="w-[430px] hidden md:block" alt="" />
+        <img
+          src={loginImg}
+          className="w-[430px] hidden md:block"
+          alt="login icon"
+        />
       </div>
     </div>
   );
