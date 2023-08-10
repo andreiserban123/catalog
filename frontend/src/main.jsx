@@ -1,30 +1,26 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from 'react-router-dom';
 
-import store from './store';
-import { Provider } from 'react-redux';
-import Home from './routes/Home';
 import Login from './routes/Login';
-import App from './App';
+import ErrorPage from './error-page';
 import './main.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './routes/Home';
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route index={true} path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-    </Route>
-  )
-);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
+  <StrictMode>
     <RouterProvider router={router} />
-  </Provider>
+  </StrictMode>
 );

@@ -1,22 +1,38 @@
 import { useRef } from 'react';
 import loginImg from '../assets/login-indigo.jpg';
 import { toast } from 'react-toastify';
+import { redirect } from 'react-router-dom';
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const onSubmit = async (e) => {
+
+  const onSubmit = (e) => {
     e.preventDefault();
-    try {
-      const { data } = await login({
-        email: emailRef.current.value,
-        password: passwordRef.current.value,
-      });
-      dispatch(setCredentials(data));
-      navigate('/');
-    } catch (err) {
-      toast.error(err?.response?.data?.message || err.message);
+
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    if (!email || !password) {
+      toast.error('Please fill in all fields');
+      return;
     }
+
+    fetch('http://localhost:5000/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.id) {
+          return redirect('/');
+        } else {
+          return toast.error(data.message);
+        }
+      });
   };
+
   return (
     <div className="flex items-center min-h-screen justify-center bg-indigo-400">
       <div className="relative flex flex-col m-6 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0">
