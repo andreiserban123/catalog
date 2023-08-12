@@ -1,10 +1,14 @@
-const Card = ({ materie, note }) => {
+const Card = ({ materie }) => {
   return (
     <div className="bg-indigo-100 border-indigo-900 border-4 shadow-2xl shadow-indigo-700  p-20  rounded-2xl flex flex-col items-center justify-around space-y-5">
       <h2 className="font-sans font-bold text-2xl underline-offset-1">
         {materie}
       </h2>
-      <ul>{note.map((el) => {})}</ul>
+      <ul>
+        <li>9</li>
+        <li>2</li>
+        <li>5</li>
+      </ul>
       <button className="border-2 text-xl bg-indigo-700 text-white py-2 px-4 rounded-2xl hover:text-white hover:bg-indigo-400 hover:transition-opacity duration-200 ">
         Vezi mai mult
       </button>

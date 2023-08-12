@@ -19,8 +19,8 @@ const loginUser = asyncHandler(async (req, res) => {
     const id_role = result2.rows[0][1];
     generateToken(res, id_user_roles, id_role);
     res.status(200).json({
-      id: id_user_roles,
-      email: user[2],
+      success: true,
+      message: 'User Logged with success',
     });
     await connection.close();
   } else {
@@ -38,14 +38,24 @@ const logoutUser = asyncHandler(async (req, res) => {
     httpOnly: true,
     expires: new Date(0),
   });
-  res.status(200).json({ message: 'User Logout with success' });
+  res.status(200).json({
+    success: true,
+    message: 'User Logout with success',
+  });
 });
 
 // @desc    get proffile user
 // route    GET /api/users/profile
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `${req.user.userId}` });
+  console.log(req.user);
+  res.status(200).json({
+    success: true,
+    payload: {
+      userId: `${req.user.userId}`,
+      userRole: `${req.user.userRole}`,
+    },
+  });
 });
 
 // @desc    Update profile user
@@ -55,4 +65,30 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   res.status(200).json({ message: 'Update User Profile' });
 });
 
-export { loginUser, logoutUser, getUserProfile, updateUserProfile };
+// @desc Get Subjects with grades
+// route GET /api/users/subjects
+// @access Private
+
+const getUserSubjects = asyncHandler(async (req, res) => {
+  const { id } = req.body;
+  const connection = await oracledb.getConnection();
+  const query = `SELECT * from SIT_SUBJECTS where id = :id`;
+  const result = await connection.execute(query, { id });
+});
+
+// @desc Only for teachers
+// route GET /api/users/teachersroute
+// @access Private
+
+const getTeachersRoute = asyncHandler(async (req, res) => {
+  res.status(200).json({ message: 'Only for teachers' });
+});
+
+export {
+  loginUser,
+  logoutUser,
+  getUserProfile,
+  updateUserProfile,
+  getUserSubjects,
+  getTeachersRoute,
+};

@@ -1,16 +1,17 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-
 import Login from './routes/Login';
 import ErrorPage from './error-page';
 import './main.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './routes/Home';
+import App from './App';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <App />,
     errorElement: <ErrorPage />,
   },
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </StrictMode>
+  </Provider>
 );

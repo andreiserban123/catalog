@@ -1,18 +1,18 @@
 import { useRef } from 'react';
 import loginImg from '../assets/login-indigo.jpg';
-import { toast } from 'react-toastify';
-import { redirect } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     if (!email || !password) {
-      toast.error('Please fill in all fields');
       return;
     }
 
@@ -25,10 +25,13 @@ const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.id) {
-          return redirect('/');
+        if (data.success === true) {
+          toast.success('Login successfully');
+          setTimeout(() => {
+            navigate('/');
+          }, 1000);
         } else {
-          return toast.error(data.message);
+          toast.error('Login failed');
         }
       });
   };
@@ -65,6 +68,7 @@ const Login = () => {
               >
                 <span>Next</span>
               </button>
+              <ToastContainer />
             </div>
           </form>
         </div>

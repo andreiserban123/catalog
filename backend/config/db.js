@@ -1,5 +1,5 @@
-import oracledb from "oracledb";
-import dotenv from "dotenv";
+import oracledb from 'oracledb';
+import dotenv from 'dotenv';
 dotenv.config();
 
 const dbConfig = {
@@ -12,15 +12,12 @@ const dbConfig = {
   poolTimeout: 100000, // maximum time in seconds that a connection can remain idle in the pool
 };
 
-async function createPool() {
+export default async function createPool() {
   try {
     await oracledb.createPool(dbConfig);
-    console.log("Connection pool created!");
+    console.log('Connection pool created!');
   } catch (err) {
-    console.error("Error creating connection pool:", err.message);
+    console.error('Error creating connection pool:', err.message);
     throw err;
   }
 }
-
-// Export queryDatabase for use in other modules
-export { createPool };
