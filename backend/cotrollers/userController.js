@@ -20,7 +20,10 @@ const loginUser = asyncHandler(async (req, res) => {
     generateToken(res, id_user_roles, id_role);
     res.status(200).json({
       success: true,
-      message: 'User Logged with success',
+      payload: {
+        id_user_roles,
+        id_role,
+      },
     });
     await connection.close();
   } else {

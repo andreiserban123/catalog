@@ -3,7 +3,11 @@ import loginImg from '../assets/login-indigo.jpg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCurrentUser } from '../features/user/userSlice';
+
 const Login = () => {
+  const dispatch = useDispatch();
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -15,7 +19,6 @@ const Login = () => {
     if (!email || !password) {
       return;
     }
-
     fetch('http://localhost:5000/api/users', {
       method: 'POST',
       headers: {
@@ -27,6 +30,11 @@ const Login = () => {
       .then((data) => {
         if (data.success === true) {
           toast.success('Login successfully');
+          const user = {
+            id_user_roles: data.payload.id_user_roles,
+            id_role: data.payload.id_role,
+          };
+          dispatch(setCurrentUser(user));
           setTimeout(() => {
             navigate('/');
           }, 1000);
