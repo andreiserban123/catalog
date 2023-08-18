@@ -9,8 +9,8 @@ const generateToken = (res, userId, userRole) => {
     expiresIn: '30d',
   });
   res.cookie('jwt', token, {
+    path: '/',
     httpOnly: true,
-    sameSite: 'strict',
     maxAge: 30 * 24 * 60 * 60 * 1000, // merge in secunde (30 de zile in s)
   });
 };

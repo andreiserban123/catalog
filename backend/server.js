@@ -4,7 +4,7 @@ import createPool from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import userRoutes from './routes/userRoutes.js';
 import cookieParser from 'cookie-parser';
-
+import cors from 'cors';
 dotenv.config();
 const port = process.env.port || 5000;
 const app = express();
@@ -21,6 +21,15 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();
 });
+
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
+
+app.options('*', cors());
 
 app.use('/api/users', userRoutes);
 

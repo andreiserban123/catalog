@@ -2,11 +2,11 @@ import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler';
 
 // aici se verifica daca userul este logat sau nu
-// TO DO: de verificat daca userul este admin sau nu
 
 const protect = asyncHandler(async (req, res, next) => {
   let token;
   token = req.cookies.jwt;
+  console.log(token);
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);

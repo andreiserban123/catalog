@@ -1,47 +1,40 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import loginImg from '../assets/login-indigo.jpg';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setCurrentUser } from '../features/user/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLoginMutation } from '../slices/userApiSlice';
+import { setCredentials } from '../slices/authSlice';
+import { toast } from 'react-toastify';
+import { CgSpinner } from 'react-icons/cg';
 
 const Login = () => {
-  const dispatch = useDispatch();
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const onSubmit = (e) => {
+  const [login, { isLoading, error }] = useLoginMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [navigate, userInfo]);
+
+  const onSubmit = async (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    if (!email || !password) {
-      return;
+
+    try {
+      const res = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      navigate('/');
+    } catch (err) {
+      toast.error(err?.data?.message || 'Something went wrong');
     }
-    fetch('http://localhost:5000/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success === true) {
-          toast.success('Login successfully');
-          const user = {
-            id_user_roles: data.payload.id_user_roles,
-            id_role: data.payload.id_role,
-          };
-          dispatch(setCurrentUser(user));
-          setTimeout(() => {
-            navigate('/');
-          }, 1000);
-        } else {
-          toast.error('Login failed');
-        }
-      });
   };
 
   return (
@@ -67,7 +60,7 @@ const Login = () => {
                 placeholder="Enter your password"
               />
             </div>
-
+            {isLoading && <CgSpinner className="w-12" />}
             <div className="flex flex-col items-center justify-between mt-6 space-y-6 md:flex-row md:space-y-0">
               <div className="font-thin text-indigo-700">Forgot password</div>
               <button
@@ -76,7 +69,6 @@ const Login = () => {
               >
                 <span>Next</span>
               </button>
-              <ToastContainer />
             </div>
           </form>
         </div>
